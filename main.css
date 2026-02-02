@@ -1,0 +1,178 @@
+/* 0. UNIQUE FONTS IMPORT */
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Dancing+Script:wght@600&family=Outfit:wght@700;800&family=Space+Grotesk:wght@400;500&display=swap');
+
+/* 1. CORE STYLES & PALETTE */
+:root {
+  --park-green: #1b261d;
+  --sunset-orange: #ff8c42;
+  --savannah-gold: #d4a373;
+  --soft-sand: #fcfaf5; 
+  --text-gray: #333;
+  --grid-dot: rgba(212, 163, 115, 0.2); 
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--soft-sand);
+  background-image: radial-gradient(var(--grid-dot) 1.5px, transparent 1.5px);
+  background-size: 30px 30px;
+  background-attachment: fixed;
+  font-family: 'Space Grotesk', sans-serif;
+  color: var(--text-gray);
+  line-height: 1.8;
+  overflow-x: hidden; /* Requirement: No horizontal scrolling */
+}
+
+/* 2. GLOBAL LINK STYLING (Replacing default blue) */
+a {
+  color: var(--park-green);
+  text-decoration: none;
+  font-weight: 700;
+  transition: all 0.3s ease-in-out;
+  border-bottom: 2px solid transparent; 
+}
+
+a:hover {
+  color: var(--sunset-orange);
+  border-bottom-color: var(--savannah-gold);
+}
+
+/* 3. CSS GRID LAYOUT (Requirement #1) */
+.page-wrapper {
+  display: grid;
+  grid-template-columns: 1fr; /* Mobile first */
+  max-width: 1400px; 
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.94); 
+}
+
+@media (min-width: 1024px) {
+  .page-wrapper {
+    grid-template-columns: 1fr 350px; 
+    grid-template-areas: 
+      "header  header"
+      "intro   sidebar"
+      "main    sidebar"
+      "footer  footer";
+  }
+
+  header[role="banner"] { grid-area: header; }
+  .intro { grid-area: intro; }
+  .main { grid-area: main; }
+  .sidebar { grid-area: sidebar; }
+  footer { grid-area: footer; }
+}
+
+/* 4. COMPONENT LAYOUT (Flexbox Requirement #2) */
+.sidebar ul {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* 5. HERO HEADER */
+header[role="banner"] {
+  height: 60vh; 
+  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), 
+              url('https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?q=80&w=2000');
+  background-size: cover;
+  background-position: center;
+  display: flex; 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+}
+
+header h1 {
+  font-family: 'Bungee Shade', cursive;
+  font-size: clamp(2rem, 7vw, 4.5rem);
+  color: #fff;
+  text-shadow: 3px 3px 0px var(--park-green);
+}
+
+/* 6. TYPOGRAPHY & READABILITY (Requirement #3) */
+h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.8rem;
+  color: var(--park-green);
+  margin: 40px 0 20px 0;
+  border-bottom: 3px solid var(--savannah-gold);
+  display: inline-block;
+}
+
+p { margin-bottom: 20px; }
+
+/* 7. VISUAL DESIGN & SIDEBAR (Requirement #4) */
+.intro, .main {
+  padding: 40px;
+}
+
+/* Designer names specific styling */
+.designer-name {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.2rem;
+  color: var(--savannah-gold) !important;
+  border-bottom: none;
+}
+
+.sidebar {
+  padding: 40px 20px;
+  background: rgba(27, 38, 29, 0.03);
+  border-left: 1px solid #ddd;
+}
+
+/* 8. RESPONSIVENESS (Requirement #5) */
+@media (min-width: 1024px) {
+  .main {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+  
+  .explanation, .participation, .benefits {
+    flex: 1 1 45%; 
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 5px 5px 0px var(--grid-dot);
+  }
+
+  /* Asymmetric staggering for interest */
+  .participation { margin-top: -30px; background: var(--soft-sand); }
+}
+
+/* 9. FOOTER STYLING */
+footer {
+  padding: 60px 20px;
+  background: var(--park-green);
+}
+
+footer a {
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.3);
+  padding: 8px 15px;
+  font-size: 0.8rem;
+}
+
+footer a:hover {
+  background: var(--sunset-orange);
+  border-color: var(--sunset-orange);
+  color: white;
+}
+
+/* Safety reset for lists */
+ul, li { list-style: none; padding: 0; margin: 0; }
