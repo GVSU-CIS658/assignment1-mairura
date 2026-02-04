@@ -21,7 +21,6 @@
 
 body {
   background-color: var(--soft-sand);
-  /* Multiple background images used per guidelines */
   background-image: 
     radial-gradient(var(--grid-dot) 0.1em, transparent 0.1em);
   background-size: 1.5em 1.5em;
@@ -44,7 +43,7 @@ a:hover {
   color: var(--sunset-orange);
 }
 
-/* 3. CSS GRID LAYOUT - MOBILE FIRST */
+/* 3. CSS GRID LAYOUT */
 .page-wrapper {
   display: grid;
   grid-template-columns: 1fr;
@@ -64,7 +63,7 @@ a:hover {
       "footer  footer";
   }
 
-  /* Using attribute selectors/classes instead of IDs */
+  /* Using attribute selectors/classes */
   header[role="banner"] { grid-area: header; }
   .intro { grid-area: intro; }
   .main { grid-area: main; }
@@ -116,7 +115,6 @@ h3 {
   display: inline-block;
 }
 
-/* Using :first-child per tips */
 .main > div h3:first-child {
   margin-top: 0;
 }
@@ -155,18 +153,17 @@ h3 {
     margin-bottom: 0;
   }
 
-  /* Forcing vertical stack for specific blocks */
+  /* Vertical stack for specific blocks */
   .benefits, .requirements {
     flex: 1 1 100% !important;
   }
 }
 
-/* Classes for styling, avoid IDs */
 .participation, .requirements {
   background: var(--soft-sand) !important;
 }
 
-/* 9. FOOTER - CENTERED, SPACED & WRAPPABLE */
+/* 8. FOOTER */
 .main footer {
   display: flex;
   flex-wrap: wrap;
